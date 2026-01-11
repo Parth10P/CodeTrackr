@@ -1,63 +1,33 @@
-// // src/components/Navbar.jsx
-// import React from "react";
-// import "./Navbar.css";
-
-// const Navbar = () => {
-//   return (
-//     <nav className="navbar">
-//       <div className="navbar-logo">CodeTracker</div>
-//       <ul className="navbar-links">
-//         <li><a href="#home">Home</a></li>
-//         <select>
-//         <option>Feature</option>
-//         <option><a href="#RatingStats">Rating Stats</a></option>
-//         <option>Rating Stats</option>
-//         <option>Recent Submission</option>
-//         <option>Problem Solved by Level</option>
-//         <option>Problem Solved by Tag</option>
-//         </select>
-//         <li><a href="#about">About</a></li>
-//         <li><a href="#contact">Contact</a></li>
-//       </ul>
-//     </nav>
-//   );
-// };
-
-// export default Navbar;
-
-
 import React from "react";
-import "./Navbar.css";
+import { ResizableNavbar } from "./ui/ResizableNavbar";
 
 const Navbar = () => {
-  const handleNavigation = (event) => {
-    const targetId = event.target.value;
-    if (targetId) {
-      const targetElement = document.getElementById(targetId);
-      if (targetElement) {
-        targetElement.scrollIntoView({ behavior: "smooth" });
-      }
-    }
-  };
+  const navItems = [
+    { name: "Home", link: "#home" },
+    {
+      name: "Stats",
+      children: [
+        { name: "User Info", id: "userInfo" },
+        { name: "Rating Stats", id: "RatingStats" },
+        { name: "Recent Submissions", id: "RecentSubmissions" },
+        { name: "Problem Solved", id: "ProblemSolved" },
+      ],
+    },
+    { name: "About", link: "#about" },
+  ];
 
-  return (
-    <nav className="navbar">
-      <div className="navbar-logo">CodeTracker</div>
-      <ul className="navbar-links">
-        <li><a href="#home">Home</a></li>
-        <li>
-          <select onChange={handleNavigation}>
-            <option value="userInfo">User Info</option>
-            <option value="RatingStats">Rating Stats</option>
-            <option value="RecentSubmissions">Recent Submissions</option>
-            <option value="ProblemSolved">Problem Solved</option>
-          </select>
-        </li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
+  const logo = (
+    <div className="flex items-center gap-2">
+      <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white font-bold shadow-lg shadow-blue-500/20">
+        CT
+      </div>
+      <span className="font-bold text-xl tracking-tight bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent hidden sm:block">
+        CodeTrackr
+      </span>
+    </div>
   );
+
+  return <ResizableNavbar navItems={navItems} logo={logo} />;
 };
 
 export default Navbar;

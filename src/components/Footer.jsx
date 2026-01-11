@@ -1,14 +1,35 @@
 import React from "react";
-import "./Footer.css";
 
 const Footer = () => {
   return (
-    <footer className="footer">
-      <p style={{fontSize:'15px'}}>© 2025 CodeTracker. All rights reserved.</p>
-
-      <p lassName="foot-style" style={{fontSize:'12px'}}>
-        Made with ❤️ by <a href="https://github.com/parth10p" target="_blank" rel="noopener noreferrer">Patel Parthkumar</a>
-      </p>
+    <footer className="mt-auto border-t border-slate-800 bg-slate-950/50 backdrop-blur-sm relative z-10 w-full">
+      <div className="container mx-auto px-4 py-8">
+        <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+          <div className="text-slate-400 text-sm">
+            &copy; {new Date().getFullYear()} CodeTrackr. All rights reserved.
+          </div>
+          <div className="flex gap-6">
+            <a
+              href="#"
+              className="text-slate-400 hover:text-white transition-colors text-sm"
+            >
+              Privacy Policy
+            </a>
+            <a
+              href="#"
+              className="text-slate-400 hover:text-white transition-colors text-sm"
+            >
+              Terms of Service
+            </a>
+            <a
+              href="#"
+              className="text-slate-400 hover:text-white transition-colors text-sm"
+            >
+              Contact Support
+            </a>
+          </div>
+        </div>
+      </div>
     </footer>
   );
 };
